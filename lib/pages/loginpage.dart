@@ -84,10 +84,12 @@ class _LoginPageState extends State<LoginPage> {
       userValidator: (value) {
         // TODO: precisa ser um e-mail válido/
         if (value!.isEmpty) return 'E-mail inválido';
+        return null;
       },
       passwordValidator: (value) {
         // TODO: Validar a senha, com no mínimo 6 caracteres(letras e números)
         if (value!.isEmpty) return 'Senha inválida';
+        return null;
       },
       loginProviders: <LoginProvider>[
         LoginProvider(
