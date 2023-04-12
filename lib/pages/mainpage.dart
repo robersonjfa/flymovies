@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flymovies/components/GradientComponent.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key, required this.title});
@@ -42,13 +43,16 @@ class _MainPageState extends State<MainPage> {
                     image: DecorationImage(
                         opacity: 0.2,
                         image: NetworkImage(
-                            'https://cdn.pixabay.com/photo/023/03/21/15/41/umbrella-7867543_960_720.jpg'),
+                            'https://cdn.pixabay.com/photo/2016/09/14/08/18/film-1668918_960_720.jpg'),
                         fit: BoxFit.cover)),
                 width: 500,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    const GradientComponent(
+                      colors: [Colors.blue, Colors.pink, Colors.deepPurple],
+                    ),
                     const Text('Cálculo de IMC',
                         textAlign: TextAlign.center,
                         style: TextStyle(
