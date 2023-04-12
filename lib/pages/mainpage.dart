@@ -38,7 +38,7 @@ class _MainPageState extends State<MainPage> {
         ),
         body: Align(
             child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     image: DecorationImage(
                         opacity: 0.2,
                         image: NetworkImage(
@@ -49,7 +49,7 @@ class _MainPageState extends State<MainPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text('Cálculo de IMC',
+                    const Text('Cálculo de IMC',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 30, fontWeight: FontWeight.bold)),
@@ -62,7 +62,6 @@ class _MainPageState extends State<MainPage> {
                       min: 0,
                       max: 2.5,
                       onChanged: (double value) {
-                        print(value);
                         setState(() {
                           _currentHeight = value;
                         });
