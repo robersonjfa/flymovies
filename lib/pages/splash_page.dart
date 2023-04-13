@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flymovies/pages/loginpage.dart';
+import 'package:flymovies/pages/login_page.dart';
 import 'package:splash_view/source/presentation/presentation.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

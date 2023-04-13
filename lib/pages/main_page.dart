@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flymovies/components/GradientComponent.dart';
+import 'package:flymovies/components/gradient_component.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key, required this.title});
