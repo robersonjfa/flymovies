@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
+import 'package:flymovies/daos/database.dart';
+import 'package:flymovies/models/user.dart';
 import 'package:flymovies/pages/main_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:window_manager/window_manager.dart';
-
-const users = {'flymovies@gmail.com': 'flymovies'};
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -15,11 +15,17 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   Duration get loginTime => const Duration(milliseconds: 2250);
+  late final db;
+
+  initDb() async {
+    db = await $FloorAppDatabase.databaseBuilder('flymovies.db').build();
+  }
 
   @override
   void initState() {
     super.initState();
     resizeWindow();
+    initDb();
   }
 
   resizeWindow() async {
@@ -37,15 +43,14 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
-  Future<String?> _authUser(LoginData data) {
-    return Future.delayed(loginTime).then((_) {
-      if (!users.containsKey(data.name)) {
-        return 'Usuário não existe!';
+  Future<String?> _authUser(LoginData data) async {
+    return Future.delayed(loginTime).then((_) async {
+      var u = await db.userDao.findUserByEmail(data.name);
+      if (u == null || u.password != data.password) {
+        return 'Usuário e/ou senha inválidos!';
+      } else {
+        return null;
       }
-      if (users[data.name] != data.password) {
-        return 'Senha não confere!';
-      }
-      return null;
     });
   }
 
@@ -57,7 +62,8 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<String?> _recoverPassword(String name) {
     return Future.delayed(loginTime).then((_) {
-      if (!users.containsKey(name)) {
+      User u = db.userDao.findUserByEmail(name);
+      if (u != null) {
         return 'Usuário não existe!';
       }
       return null;
@@ -71,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
       messages: LoginMessages(
           userHint: 'E-mail',
           passwordHint: 'Senha',
-          flushbarTitleError: 'tefdsasdasd',
+          flushbarTitleError: 'Erro Login',
           confirmPasswordHint: 'Confirmar senha',
           forgotPasswordButton: 'Esqueceu a senha?',
           confirmPasswordError: 'Senha não confere!',
