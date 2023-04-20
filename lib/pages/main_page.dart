@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flymovies/components/gradient_component.dart';
+import 'package:flymovies/models/user.dart';
 import 'package:flymovies/pages/actors_page.dart';
 import 'package:flymovies/pages/movies_page.dart';
 import 'package:flymovies/pages/settings_page.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({super.key, required this.title});
+  MainPage({super.key, required this.title, this.user});
 
   final String title;
+  User? user;
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -33,7 +33,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("${widget.title} - Bem-vindo(a): ${widget.user!.name}"),
       ),
       body: _pages[_currentPage],
       bottomNavigationBar: BottomNavigationBar(

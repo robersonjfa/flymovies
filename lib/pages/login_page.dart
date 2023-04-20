@@ -16,6 +16,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   Duration get loginTime => const Duration(milliseconds: 2250);
   late final db;
+  User? user;
 
   initDb() async {
     db = await $FloorAppDatabase.databaseBuilder('flymovies.db').build();
@@ -45,8 +46,8 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<String?> _authUser(LoginData data) async {
     return Future.delayed(loginTime).then((_) async {
-      var u = await db.userDao.findUserByEmail(data.name);
-      if (u == null || u.password != data.password) {
+      user = await db.userDao.findUserByEmail(data.name);
+      if (user == null || user!.password != data.password) {
         return 'Usuário e/ou senha inválidos!';
       } else {
         return null;
@@ -133,7 +134,7 @@ class _LoginPageState extends State<LoginPage> {
       ],
       onSubmitAnimationCompleted: () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => const MainPage(title: 'FlyMovies App'),
+          builder: (context) => MainPage(title: 'FlyMovies App', user: user),
         ));
       },
       onRecoverPassword: _recoverPassword,

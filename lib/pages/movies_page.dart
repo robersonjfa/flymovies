@@ -10,6 +10,15 @@ class MoviesPage extends StatefulWidget {
 class _MoviesPageState extends State<MoviesPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(child: Text('Movies'));
+    return Container(
+        // MediaQuery - widget
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        color: Colors.blue,
+        child: Row(children: [
+          const Text('Movies'),
+          ElevatedButton(
+              onPressed: () => {debugPrint('teste')}, child: Text('Clicar'))
+        ]));
   }
 }

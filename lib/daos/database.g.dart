@@ -63,6 +63,8 @@ class _$AppDatabase extends AppDatabase {
 
   UserDao? _userDaoInstance;
 
+  SettingDao? _settingDaoInstance;
+
   Future<sqflite.Database> open(
     String path,
     List<Migration> migrations, [
@@ -86,6 +88,8 @@ class _$AppDatabase extends AppDatabase {
       onCreate: (database, version) async {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `User` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT, `email` TEXT, `password` TEXT)');
+        await database.execute(
+            'CREATE TABLE IF NOT EXISTS `Setting` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `color` INTEGER, `height` INTEGER, `width` INTEGER)');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -96,6 +100,11 @@ class _$AppDatabase extends AppDatabase {
   @override
   UserDao get userDao {
     return _userDaoInstance ??= _$UserDao(database, changeListener);
+  }
+
+  @override
+  SettingDao get settingDao {
+    return _settingDaoInstance ??= _$SettingDao(database, changeListener);
   }
 }
 
@@ -160,5 +169,70 @@ class _$UserDao extends UserDao {
   @override
   Future<void> insertUser(User user) async {
     await _userInsertionAdapter.insert(user, OnConflictStrategy.abort);
+  }
+}
+
+class _$SettingDao extends SettingDao {
+  _$SettingDao(
+    this.database,
+    this.changeListener,
+  )   : _queryAdapter = QueryAdapter(database),
+        _settingInsertionAdapter = InsertionAdapter(
+            database,
+            'Setting',
+            (Setting item) => <String, Object?>{
+                  'id': item.id,
+                  'color': item.color,
+                  'height': item.height,
+                  'width': item.width
+                }),
+        _settingUpdateAdapter = UpdateAdapter(
+            database,
+            'Setting',
+            ['id'],
+            (Setting item) => <String, Object?>{
+                  'id': item.id,
+                  'color': item.color,
+                  'height': item.height,
+                  'width': item.width
+                });
+
+  final sqflite.DatabaseExecutor database;
+
+  final StreamController<String> changeListener;
+
+  final QueryAdapter _queryAdapter;
+
+  final InsertionAdapter<Setting> _settingInsertionAdapter;
+
+  final UpdateAdapter<Setting> _settingUpdateAdapter;
+
+  @override
+  Future<List<Setting>> findAllSettings() async {
+    return _queryAdapter.queryList('SELECT * FROM Setting',
+        mapper: (Map<String, Object?> row) => Setting(
+            color: row['color'] as int?,
+            height: row['height'] as int?,
+            width: row['width'] as int?));
+  }
+
+  @override
+  Future<Setting?> findSettingById(int id) async {
+    return _queryAdapter.query('SELECT * FROM Setting WHERE id = ?1',
+        mapper: (Map<String, Object?> row) => Setting(
+            color: row['color'] as int?,
+            height: row['height'] as int?,
+            width: row['width'] as int?),
+        arguments: [id]);
+  }
+
+  @override
+  Future<void> insertSetting(Setting setting) async {
+    await _settingInsertionAdapter.insert(setting, OnConflictStrategy.abort);
+  }
+
+  @override
+  Future<void> updateSetting(Setting setting) async {
+    await _settingUpdateAdapter.update(setting, OnConflictStrategy.abort);
   }
 }
