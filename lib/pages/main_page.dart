@@ -5,10 +5,10 @@ import 'package:flymovies/pages/movies_page.dart';
 import 'package:flymovies/pages/settings_page.dart';
 
 class MainPage extends StatefulWidget {
-  MainPage({super.key, required this.title, this.user});
+  const MainPage({super.key, required this.title, this.user});
 
   final String title;
-  User? user;
+  final User? user;
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -16,7 +16,11 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int _currentPage = 0;
-  final List<Widget> _pages = [ActorsPage(), MoviesPage(), SettingsPage()];
+  final List<Widget> _pages = const [
+    ActorsPage(),
+    MoviesPage(),
+    SettingsPage()
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
