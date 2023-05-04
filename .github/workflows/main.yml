@@ -1,4 +1,4 @@
-name: GitHub Actions Flymovies
+name: Flymovies Actions
 run-name: ${{ github.actor }} building Flymovies 🚀
 on: [push]
 jobs:
