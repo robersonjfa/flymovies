@@ -26,10 +26,9 @@ jobs:
           directory: build/windows/runner/Release
       - name: Windows Release
         uses: ncipollo/release-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           artifacts: build/windows/runner/Release/flymovies-${{github.ref_name}}-windows.zip
+          token: ${{ secrets.TOKEN }}
   build-and-release-linux:
     runs-on: ubuntu-latest
     steps:
@@ -56,9 +55,8 @@ jobs:
           directory: build/linux/x64/release/bundle
       - name: Linux Release
         uses: ncipollo/release-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           artifacts: build/linux/x64/release/bundle/flymovies-${{github.ref_name}}-linux.zip
+          token: ${{ secrets.TOKEN }}
 
       
