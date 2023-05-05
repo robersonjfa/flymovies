@@ -1,6 +1,9 @@
 name: Flymovies Actions
 run-name: ${{ github.actor }} building Flymovies 🚀
-on: [push]
+on: 
+  push:
+    tags:
+      - '*'
 jobs:
   build-and-release-windows:
     runs-on: windows-latest
@@ -25,10 +28,9 @@ jobs:
           filename: flymovies-${{github.ref_name}}-windows.zip
           directory: build/windows/runner/Release
       - name: Windows Release
-        uses: actions/upload-artifact@v3
+        uses: ncipollo/release-action@v1
         with:
-          name: windows release
-          path: build/windows/runner/Release/flymovies-${{github.ref_name}}-windows.zip
+          artifacts: build/windows/runner/Release/flymovies-${{github.ref_name}}-windows.zip
           
   build-and-release-linux:
     runs-on: ubuntu-latest
@@ -55,10 +57,9 @@ jobs:
           filename: flymovies-${{github.ref_name}}-linux.zip
           directory: build/linux/x64/release/bundle
       - name: Linux Release
-        uses: actions/upload-artifact@v3
+        uses: ncipollo/release-action@v1
         with:
-          name: linux-release
-          path: build/linux/x64/release/bundle/flymovies-${{github.ref_name}}-linux.zip
+          artifacts: build/linux/x64/release/bundle/flymovies-${{github.ref_name}}-linux.zip
           
 
       
