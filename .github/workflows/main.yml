@@ -58,7 +58,7 @@ jobs:
           type: 'zip'
           filename: flymovies-${{github.ref_name}}-linux.zip
           directory: build/linux/x64/release/bundle
-      - name: Linux Release
+      - name: Linux Release Upload
         uses: actions/upload-artifact@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
