@@ -22,7 +22,7 @@ class MovieController extends GetxController {
   void addToWatchList(Movie movie) {
     if (watchListMovies.any((m) => m.id == movie.id)) {
       watchListMovies.remove(movie);
-      Get.snackbar('Success', 'removed from watch list',
+      Get.snackbar('Success', 'removed from watch list ',
           snackPosition: SnackPosition.BOTTOM,
           animationDuration: const Duration(milliseconds: 500),
           duration: const Duration(milliseconds: 500));
