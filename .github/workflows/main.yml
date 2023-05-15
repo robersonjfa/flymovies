@@ -2,8 +2,7 @@ name: Flymovies Actions
 run-name: ${{ github.actor }} building Flymovies 🚀
 on: 
   push:
-    tags:
-      - '*'
+
 jobs:
   build-and-release-windows:
     runs-on: windows-latest
