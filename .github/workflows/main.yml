@@ -36,9 +36,6 @@ jobs:
           
   build-and-release-linux:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'release'}}
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
