@@ -58,11 +58,11 @@ jobs:
           type: 'zip'
           filename: flymovies-${{github.ref_name}}-linux.zip
           directory: build/linux/x64/release/bundle
-      - name: Windows Release
+      - name: Linux Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         env:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           files: build/linux/x64/release/bundle/flymovies-${{github.ref_name}}-linux.zip
           
