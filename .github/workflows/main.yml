@@ -59,12 +59,8 @@ jobs:
           filename: flymovies-${{github.ref_name}}-linux.zip
           directory: build/linux/x64/release/bundle
       - name: Linux Release
-        uses: softprops/action-gh-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: ${{ github.event.inputs.version }}
-          draft: false
-          prerelease: false
-          generate_release_notes: true
-          files: build/linux/x64/release/bundle/flymovies-${{github.ref_name}}-linux.zip
+          artifacts: "build/linux/x64/release/bundle/flymovies-${{github.ref_name}}-linux.zip"
+          token: ${{ secrets.TOKEN }}
+
