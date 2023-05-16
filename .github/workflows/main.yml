@@ -24,7 +24,7 @@ jobs:
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          filename: flymovies-${{github.ref_name}}-windows.zip
+          filename: flymovies-windows.zip
           directory: build/windows/runner/Release
       - name: Windows Release
         uses: ncipollo/release-action@v1
@@ -55,7 +55,7 @@ jobs:
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          filename: flymovies-${{github.ref_name}}-linux.zip
+          filename: flymovies-linux.zip
           directory: build/linux/x64/release/bundle
       - name: Linux Release
         uses: ncipollo/release-action@v1
