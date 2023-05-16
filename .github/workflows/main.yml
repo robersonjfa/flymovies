@@ -29,9 +29,9 @@ jobs:
       - name: Windows Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: build/windows/runner/Release/flymovies-${{github.ref_name}}-windows.zip
+          artifacts: build/windows/runner/Release/flymovies-windows.zip
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: vw1.0.${{ github.run_number }}
+          tag: v1.0.${{ github.run_number }}w
 
   build-and-release-linux:
     runs-on: ubuntu-latest
@@ -60,7 +60,7 @@ jobs:
       - name: Linux Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/linux/x64/release/bundle/flymovies-${{github.ref_name}}-linux.zip"
+          artifacts: "build/linux/x64/release/bundle/flymovies-linux.zip"
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: vl1.0.${{ github.run_number }}
+          tag: v1.0.${{ github.run_number }}l
 
