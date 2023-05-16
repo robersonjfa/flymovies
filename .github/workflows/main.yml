@@ -2,6 +2,8 @@ name: Flymovies Actions
 run-name: ${{ github.actor }} building Flymovies 🚀
 on: 
   push:
+   tags:
+      - '*'
 
 jobs:
   build-and-release-windows:
@@ -27,13 +29,12 @@ jobs:
           filename: flymovies-${{github.ref_name}}-windows.zip
           directory: build/windows/runner/Release
       - name: Windows Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: ncipollo/release-action@v1
         with:
-          files: build/windows/runner/Release/flymovies-${{github.ref_name}}-windows.zip
-          
+          artifacts: build/windows/runner/Release/flymovies-${{github.ref_name}}-windows.zip
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: v1.0.${{ github.run_number }}
+
   build-and-release-linux:
     runs-on: ubuntu-latest
     steps:
