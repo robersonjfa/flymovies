@@ -21,14 +21,14 @@ void main() async {
 
   //abre uma conexão com o banco de dados
   //se o banco de dados não existir, cria
-  final database =
-      await $FloorAppDatabase.databaseBuilder('flymovies.db').build();
+  // final database =
+  //     await $FloorAppDatabase.databaseBuilder('flymovies.db').build();
 
-  // cria o dao do usuário
-  final userDao = database.userDao;
-  final user = User(
-      name: 'FlyMovies', email: 'flymovies@gmail.com', password: 'flymovies');
-  await userDao.insertUser(user);
+  // // cria o dao do usuário
+  // final userDao = database.userDao;
+  // final user = User(
+  //     name: 'FlyMovies', email: 'flymovies@gmail.com', password: 'flymovies');
+  // await userDao.insertUser(user);
 
   // //cria o dao de configuração(setting)
   // final settingDao = database.settingDao;
