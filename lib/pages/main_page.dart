@@ -17,8 +17,8 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int _currentPage = 0;
   final List<Widget> _pages = const [
-    ActorsPage(),
     MoviesPage(),
+    ActorsPage(),
     SettingsPage()
   ];
 
@@ -42,18 +42,18 @@ class _MainPageState extends State<MainPage> {
       body: _pages[_currentPage],
       bottomNavigationBar: BottomNavigationBar(
         elevation: 2,
-        backgroundColor: Colors.green,
+        backgroundColor: Theme.of(context).primaryColor,
         fixedColor: Colors.white,
         iconSize: 30,
         currentIndex: _currentPage,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Actors',
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.movie),
             label: 'Movies',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Actors',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

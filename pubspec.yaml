@@ -44,7 +44,8 @@ dependencies:
   get:
   fade_shimmer:
   flutter_svg:
-
+  flutter_material_color_picker:
+  shared_preferences:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
