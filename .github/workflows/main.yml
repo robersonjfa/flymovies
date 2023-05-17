@@ -1,5 +1,5 @@
 name: Flymovies Actions
-run-name: ${{ github.actor }} building Flymovies 🚀
+run-name: ${{ github.actor }} building app flymovies 🚀
 on: 
   push:
 
