@@ -10,6 +10,6 @@ class ActorsPage extends StatefulWidget {
 class _ActorsPageState extends State<ActorsPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(child: Text('Actors/Actresses'));
+    return const Text('Actors/Actresses');
   }
 }

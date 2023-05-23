@@ -21,7 +21,6 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     loadPrefs();
   }
@@ -36,8 +35,8 @@ class _SettingsPageState extends State<SettingsPage> {
           content: content,
           actions: [
             TextButton(
-              child: const Text('CANCEL'),
               onPressed: Navigator.of(context).pop,
+              child: const Text('CANCEL'),
             ),
             TextButton(
               child: const Text('SAVE'),
@@ -69,7 +68,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 ],
               ),
               ListTile(
-                leading: Icon(Icons.color_lens),
+                leading: const Icon(Icons.color_lens),
                 tileColor: Colors.orange,
                 title: Text("Primary Color"),
                 onTap: () {
