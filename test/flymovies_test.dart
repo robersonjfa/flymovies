@@ -24,14 +24,16 @@ void main() {
           genreIds: [28, 12]);
 
       var genres = Utils.getGenres(movie);
-      expect(genres, 'Action, Adventure ');
+      expect(genres, 'Action, Adventure');
     });
 
     testWidgets('MyWidget has a widget', (tester) async {
       await tester
-          .pumpWidget(const MaterialApp(home: Scaffold(body: SettingsPage())));
+          .pumpWidget(const MaterialApp(home: 
+          Scaffold(body: SettingsPage())));
       //await tester.pumpWidget(const SplashPage());
-      final hasIndicator = find.byType(SingleChildScrollView);
+      final hasIndicator = find.byType(
+        SingleChildScrollView);
 
       expect(hasIndicator, findsOneWidget);
     });

@@ -1,3 +1,4 @@
+import 'package:floor/floor.dart';
 import 'package:flutter/material.dart';
 import 'package:flymovies/controllers/movie_controller.dart';
 import 'package:flymovies/daos/database.dart';
@@ -18,6 +19,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
   final SharedPreferences prefs = await SharedPreferences.getInstance();
+  final callback = Callback(
+    onCreate: (database, version) {},
+  );
 
   //abre uma conexão com o banco de dados
   //se o banco de dados não existir, cria
