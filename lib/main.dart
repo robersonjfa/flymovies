@@ -20,24 +20,23 @@ void main() async {
   await windowManager.ensureInitialized();
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   final callback = Callback(
-    onCreate: (database, version) {},
+    onCreate: (database, version) {
+      // inserts padrões
+      database.execute(
+          "insert into user(name, email, password) values('FlyMovies','flymovies@gmail.com','flymovies')");
+      database.execute(
+          "insert into setting(color, height, width) values(1000, 100, 100)");
+    },
   );
 
   //abre uma conexão com o banco de dados
   //se o banco de dados não existir, cria
-  // final database =
-  //     await $FloorAppDatabase.databaseBuilder('flymovies.db').build();
+  final database = await $FloorAppDatabase
+      .databaseBuilder('flymovies.db')
+      .addCallback(callback)
+      .build();
 
-  // // cria o dao do usuário
-  // final userDao = database.userDao;
-  // final user = User(
-  //     name: 'FlyMovies', email: 'flymovies@gmail.com', password: 'flymovies');
-  // await userDao.insertUser(user);
-
-  // //cria o dao de configuração(setting)
-  // final settingDao = database.settingDao;
-  // final setting = Setting(color: 1000, height: 100, width: 100);
-  // await settingDao.insertSetting(setting);
+  database.close;
 
   runApp(FlyMoviesApp(prefs: prefs));
 }
