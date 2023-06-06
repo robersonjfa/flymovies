@@ -16,18 +16,12 @@ jobs:
         run: flutter pub get
       - name: Enable windows build
         run: flutter config --enable-windows-desktop
-      - name: Build artifacts
-        run: flutter build windows --release
-      - name: Archive Release
-        uses: thedoctor0/zip-release@master
-        with:
-          type: 'zip'
-          filename: flymovies-windows.zip
-          directory: build/windows/runner/Release
+      - name: Build installer
+        run: flutter pub run msix:create --release
       - name: Windows Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: build/windows/runner/Release/flymovies-windows.zip
+          artifacts: build/windows/runner/Release/flymovies.msix
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: v1.0.${{ github.run_number }}w
 
