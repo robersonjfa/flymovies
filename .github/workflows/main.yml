@@ -16,6 +16,8 @@ jobs:
         run: flutter pub get
       - name: Enable windows build
         run: flutter config --enable-windows-desktop
+      - name Add MSIX support
+        run: flutter pub add --dev msix
       - name: Build installer
         run: flutter pub run msix:create --release
       - name: Windows Release
