@@ -1,13 +1,6 @@
 import 'package:floor/floor.dart';
 import 'package:flutter/material.dart';
-import 'package:flymovies/controllers/movie_controller.dart';
 import 'package:flymovies/daos/database.dart';
-import 'package:flymovies/models/movie.dart';
-import 'package:flymovies/models/setting.dart';
-import 'package:flymovies/models/user.dart';
-// import 'package:flymovies/daos/database.dart';
-// import 'package:flymovies/models/setting.dart';
-// import 'package:flymovies/models/user.dart';
 import 'package:flymovies/pages/splash_page.dart';
 import 'package:flymovies/utils/utils.dart';
 import 'package:get/get.dart';

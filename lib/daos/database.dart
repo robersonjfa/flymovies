@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'dart:ffi';
 import 'package:floor/floor.dart';
-import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:sqflite/sqflite.dart' as sqflite;
 
 import 'user_dao.dart';

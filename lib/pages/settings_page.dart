@@ -59,9 +59,9 @@ class _SettingsPageState extends State<SettingsPage> {
             alignment: Alignment.center,
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
                     "Settings",
                   ),
@@ -70,7 +70,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ListTile(
                 leading: const Icon(Icons.color_lens),
                 tileColor: Colors.orange,
-                title: Text("Primary Color"),
+                title: const Text("Primary Color"),
                 onTap: () {
                   _openDialog(
                       "Main Color picker",
@@ -85,7 +85,7 @@ class _SettingsPageState extends State<SettingsPage> {
               const Divider(),
               ElevatedButton(
                 child:
-                    Row(children: const [Icon(Icons.logout), Text("Logout")]),
+                    const Row(children: [Icon(Icons.logout), Text("Logout")]),
                 onPressed: () => {
                   Navigator.pushReplacement(
                       context,

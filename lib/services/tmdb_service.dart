@@ -8,7 +8,7 @@ class TmdbService {
 
   TmdbService() {
     tmdb = TMDB(
-      ApiKeys('${Api.apiKey}', 'apiReadAccessTokenv4'),
+      ApiKeys(Api.apiKey, 'apiReadAccessTokenv4'),
       logConfig: const ConfigLogger(
         showLogs: true, //must be true than only all other logs will be shown
         showErrorLogs: true,

@@ -1,11 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flymovies/models/movie.dart';
 import 'package:flymovies/pages/settings_page.dart';
-import 'package:flymovies/pages/splash_page.dart';
 import 'package:flymovies/utils/utils.dart';
 
 void main() {
@@ -29,11 +25,9 @@ void main() {
 
     testWidgets('MyWidget has a widget', (tester) async {
       await tester
-          .pumpWidget(const MaterialApp(home: 
-          Scaffold(body: SettingsPage())));
+          .pumpWidget(const MaterialApp(home: Scaffold(body: SettingsPage())));
       //await tester.pumpWidget(const SplashPage());
-      final hasIndicator = find.byType(
-        SingleChildScrollView);
+      final hasIndicator = find.byType(SingleChildScrollView);
 
       expect(hasIndicator, findsOneWidget);
     });
