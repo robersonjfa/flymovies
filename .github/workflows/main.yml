@@ -16,6 +16,8 @@ jobs:
         run: flutter pub get
       - name: Enable windows build
         run: flutter config --enable-windows-desktop
+      - name: Build runner
+        run: flutter pub run build_runner
       - name: Build Windows
         run: flutter build windows
       - name: Build installer msix
