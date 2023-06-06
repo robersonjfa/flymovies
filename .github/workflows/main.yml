@@ -16,7 +16,7 @@ jobs:
         run: flutter pub get
       - name: Enable windows build
         run: flutter config --enable-windows-desktop
-      - name: Build installer
+      - name: Build installer msix
         run: flutter pub run msix:create --release
       - name: Windows Release
         uses: ncipollo/release-action@v1
