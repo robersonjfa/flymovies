@@ -114,10 +114,9 @@ msix_config:
   msix_version: 1.0.0.0
   languages: pt-br, en-us, es-es
   architecture: x64
-  logo_path: ./assets/images/icone.png
+  logo_path: ./assets/images/splash.png
   publisher: CN=Roberson Alves, OU=Computacao, O=Unoesc, L=São Miguel do Oeste, S=Santa Catarina, C=BR
   certificate_path: ./assets/certificate/certificate.pfx
   certificate_password: flymovies
-  #signtool_options: /fd SHA256 /f "./assets/certificate/certificate.pfx" /p flymovies /debug
   install_certificate: false
   capabilities: "internetClient"
