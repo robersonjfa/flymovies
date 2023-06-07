@@ -25,7 +25,9 @@ jobs:
       - name: Windows Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: build/windows/runner/Release/flymovies.msix
+          artifacts: |
+            build/windows/runner/Release/flymovies.msix
+            assets/certificate/certificate.pfx
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: v1.0.${{ github.run_number }}w
 
