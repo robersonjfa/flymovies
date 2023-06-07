@@ -14,12 +14,14 @@ jobs:
           architecture: x64
       - name: Install project dependencies
         run: flutter pub get
+      - name: Run Analyze
+        run: flutter analyze
+      - name: Run Tests
+        run: flutter test
       - name: Enable windows build
         run: flutter config --enable-windows-desktop
-      - name: Build runner
-        run: flutter pub run build_runner
       - name: Build Windows
-        run: flutter build windows
+        run: flutter pub run build_runner build
       - name: Build installer msix
         run: dart run msix:create
       - name: Windows Release
