@@ -20,8 +20,8 @@ jobs:
     #    run: flutter test
       - name: Enable windows build
         run: flutter config --enable-windows-desktop
-      - name: Build Windows
-        run: flutter pub run build_runner build windows --delete-conflicting-outputs
+    # - name: Build Windows
+    #   run: flutter pub run build_runner build windows --delete-conflicting-outputs
       - name: Build installer msix
         run: dart run msix:create
       - name: Windows Release
