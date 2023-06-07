@@ -46,7 +46,7 @@ jobs:
         run: flutter config --enable-linux-desktop
       - run: flutter build linux --release
       - name: Pack Linux
-        run: 
+        run: |
              dart pub global activate flutter_to_debian
              flutter_to_debian
       - name: Linux Release
