@@ -20,8 +20,6 @@ jobs:
     #    run: flutter test
       - name: Enable windows build
         run: flutter config --enable-windows-desktop
-    # - name: Build Windows
-    #   run: flutter pub run build_runner build windows --delete-conflicting-outputs
       - name: Build installer msix
         run: dart run msix:create
       - name: Windows Release
@@ -47,15 +45,13 @@ jobs:
       - name: Enable linux build
         run: flutter config --enable-linux-desktop
       - run: flutter build linux --release
-      - name: Archive Release
-        uses: thedoctor0/zip-release@master
-        with:
-          type: 'zip'
-          filename: flymovies-linux.zip
-          directory: build/linux/x64/release/bundle
+      - name: Pack Linux
+        run: 
+             dart pub global activate flutter_to_debian
+             flutter_to_debian
       - name: Linux Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/linux/x64/release/bundle/flymovies-linux.zip"
+          artifacts: "debian/packages/flymovies.deb"
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: v1.0.${{ github.run_number }}l
