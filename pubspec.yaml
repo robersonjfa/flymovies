@@ -119,5 +119,5 @@ msix_config:
   certificate_path: ./assets/certificate/certificate.pfx
   certificate_password: flymovies
   #signtool_options: /fd SHA256 /f "./assets/certificate/certificate.pfx" /p flymovies /debug
-  install_certificate: true
+  install_certificate: false
   capabilities: "internetClient"
