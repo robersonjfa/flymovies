@@ -46,7 +46,7 @@ dependencies:
   flutter_svg:
   flutter_material_color_picker:
   shared_preferences:
-
+  
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -56,6 +56,7 @@ dev_dependencies:
     sdk: flutter
   test: 
   floor_generator:
+  build_runner:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -111,9 +112,12 @@ msix_config:
   publisher_display_name: Roberson Alves
   identity_name: br.edu.unoesc.piii.flymovies
   msix_version: 1.0.0.0
-  languages: pt-br, en-us, es-es
+  languages: pt-br, en-us, es-ES
   architecture: x64
   logo_path: ./assets/images/splash.png
+  start_menu_icon_path: ./assets/images/splash.png
+  tile_icon_path: ./assets/images/splash.png
+  assets_directory_path: './libassets'
   publisher: CN=Roberson Alves, OU=Computacao, O=Unoesc, L=São Miguel do Oeste, S=Santa Catarina, C=BR
   certificate_path: ./assets/certificate/certificate.pfx
   certificate_password: flymovies

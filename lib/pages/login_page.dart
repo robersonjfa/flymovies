@@ -3,6 +3,7 @@ import 'package:flutter_login/flutter_login.dart';
 import 'package:flymovies/daos/database.dart';
 import 'package:flymovies/models/user.dart';
 import 'package:flymovies/pages/main_page.dart';
+import 'package:flymovies/utils/utils.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -18,15 +19,17 @@ class _LoginPageState extends State<LoginPage> {
   late final db;
   User? user;
 
-  initDb() async {
-    db = await $FloorAppDatabase.databaseBuilder('flymovies.db').build();
-  }
-
   @override
   void initState() {
+    initDb();
     super.initState();
     resizeWindow();
-    initDb();
+  }
+
+  initDb() async {
+    db = await $FloorAppDatabase
+        .databaseBuilder(Utils.getDatabasePath())
+        .build();
   }
 
   resizeWindow() async {

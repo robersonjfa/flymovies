@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flymovies/pages/login_page.dart';
+import 'package:flymovies/utils/utils.dart';
 import 'package:splash_view/source/presentation/presentation.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:floor/floor.dart';
+import 'package:flymovies/daos/database.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -14,8 +17,28 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
+    initDB();
     super.initState();
     resizeWindow();
+  }
+
+  final callback = Callback(
+    onCreate: (database, version) {
+      // inserts padrões
+      database.execute(
+          "insert into user(name, email, password) values('FlyMovies','flymovies@gmail.com','flymovies')");
+      database.execute(
+          "insert into setting(color, height, width) values(1000, 100, 100)");
+    },
+  );
+
+  void initDB() async {
+    final database = await $FloorAppDatabase
+        .databaseBuilder(Utils.getDatabasePath())
+        .addCallback(callback)
+        .build();
+
+    database.close;
   }
 
   resizeWindow() async {

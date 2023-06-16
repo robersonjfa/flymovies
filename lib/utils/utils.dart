@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flymovies/models/movie.dart';
+import 'package:path/path.dart' as p;
 
 class Utils {
+  static getDatabasePath() {
+    var dbPath = p.join(p.current, 'flymovies.db');
+    return dbPath;
+  }
+
   static String getGenres(Movie movie) {
     List<String> genres = [];
 
