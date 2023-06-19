@@ -5,6 +5,7 @@ maintainer:
   email: roberson.alves@unoesc.edu.br
 priority: optional
 section: x11
+installed_size: 11000
 essential: false
 icon: assets/images/splash.png
 
