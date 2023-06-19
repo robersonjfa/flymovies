@@ -57,6 +57,6 @@ jobs:
       - name: Linux Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: dist/1.0.0+1/flymovies-1.0.0+1-linux-setup.deb
+          artifacts: dist/1.0.0+1/flymovies-1.0.0+1-linux.deb
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: v1.0.${{ github.run_number }}l
