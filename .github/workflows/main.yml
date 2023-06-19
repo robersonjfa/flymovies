@@ -20,16 +20,17 @@ jobs:
     #    run: flutter test
       - name: Enable windows build
         run: flutter config --enable-windows-desktop
-      - name: Build Windows
-        run: flutter build windows
-      - name: Build Installer
-        run: dart run msix:create
+    #  - name: Build Windows
+    #    run: flutter build windows
+    #  - name: Build Installer
+    #    run: dart run msix:create
+      - name: Build installer
+        run: flutter_distributor release --name dev
       - name: Windows Release
         uses: ncipollo/release-action@v1
         with:
           artifacts: |
-            build/windows/runner/Release/flymovies.msix
-            assets/certificate/certificate.pfx
+            dist/*.exe
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: v1.0.${{ github.run_number }}w
 

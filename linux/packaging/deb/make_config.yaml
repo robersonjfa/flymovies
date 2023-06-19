@@ -1,0 +1,25 @@
+display_name: FlyMovies App
+package_name: flymovies
+maintainer:
+  name: Roberson Alves
+  email: roberson.alves@unoesc.edu.br
+priority: optional
+section: x11
+essential: false
+icon: assets/images/splash.png
+
+postinstall_scripts:
+  - echo "Installed my awesome app"
+postuninstall_scripts:
+  - echo "Done!"
+
+keywords:
+  - FlyMovies
+  - Movies
+
+generic_name: Movies Application
+
+categories:
+  - Media
+
+startup_notify: true

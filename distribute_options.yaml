@@ -1,0 +1,14 @@
+#variables:
+#  GITHUB_TOKEN: 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
+output: dist/
+releases:
+  - name: dev
+    jobs:
+      - name: release-dev-windows
+        package:
+          platform: windows
+          target: exe
+      - name: release-dev-linux
+        package:
+          platform: linux
+          target: deb

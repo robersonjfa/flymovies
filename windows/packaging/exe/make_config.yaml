@@ -1,0 +1,12 @@
+# The value of AppId uniquely identifies this application.
+# Do not use the same AppId value in installers for other applications.
+app_id: FlyMovies App
+publisher: Programação III - Ciência da Computação
+publisher_url: https://github.com/robersonjfa/flymovies
+display_name: FlyMovies App
+create_desktop_icon: true
+install_dir_name: flymovies
+locales:
+  - pt
+  - en
+  - es
