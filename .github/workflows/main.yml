@@ -27,12 +27,11 @@ jobs:
     #  - name: Build Installer
     #    run: dart run msix:create
       - name: Build installer
-        run: flutter_distributor release --name dev
+        run: flutter_distributor release --name dev --jobs=release-dev-windows
       - name: Windows Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: |
-            dist/*.exe
+          artifacts: dist/flymovies*.exe
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: v1.0.${{ github.run_number }}w
 
@@ -51,14 +50,11 @@ jobs:
         run: flutter pub get
       - name: Enable linux build
         run: flutter config --enable-linux-desktop
-      - run: flutter build linux --release
-      - name: Pack Linux
-        run: |
-             dart pub global activate flutter_to_debian
-             flutter_to_debian
+      - name: Build installer
+        run: flutter_distributor release --name dev --jobs=release-dev-linux
       - name: Linux Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "debian/packages/FlyMovies_1.0.0.0_amd64.deb"
+          artifacts: dist/flymovies*.deb
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: v1.0.${{ github.run_number }}l
